@@ -1,0 +1,13 @@
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    appname: DiscoveryServer
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      # 心跳检查,默认是false
+#      healthcheck: true
