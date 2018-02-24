@@ -15,10 +15,6 @@
         <groupId>com.tydic</groupId>
         <artifactId>simscloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <!--<groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.10.RELEASE</version>
-        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <!--继承了父项目的属性
@@ -53,17 +49,9 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
-
         <dependency>
             <groupId>com.tydic</groupId>
             <artifactId>sims-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.tydic</groupId>
-            <artifactId>sims-impl</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

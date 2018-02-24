@@ -2,9 +2,6 @@ package com.tydic.simscloud.service;
 
 import com.tydic.simscloud.entity.ResponseBase;
 import com.tydic.simscloud.entity.Student;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 /**
  * 测试所用
  *
