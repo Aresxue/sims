@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Ares
  * @date 2018/1/24 10:59
  */
-@FeignClient(value = "SIMS-IMPL")
 public interface DemoService
 {
     /**
@@ -21,7 +20,6 @@ public interface DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/demo/studentQuery")
     Student findStudentByName(Student student);
 
     /**
@@ -31,7 +29,6 @@ public interface DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/demo/addStudent")
     ResponseBase addStudent(Student student);
 
 }
