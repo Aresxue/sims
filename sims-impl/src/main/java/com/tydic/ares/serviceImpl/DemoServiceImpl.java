@@ -1,13 +1,16 @@
-package com.tydic.simscloud.serviceImpl;
+package com.tydic.ares.serviceImpl;
 
-import com.tydic.simscloud.entity.ResponseBase;
-import com.tydic.simscloud.entity.Student;
-import com.tydic.simscloud.mapper.DemoMapper;
-import com.tydic.simscloud.service.DemoService;
+import com.tydic.ares.entity.ResponseBase;
+import com.tydic.ares.entity.Student;
+import com.tydic.ares.mapper.DemoMapper;
+import com.tydic.ares.service.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 测试所用
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
  * @author Ares
  * @date 2018/1/24 11:02
  */
+@RestController
 @Service
 public class DemoServiceImpl implements DemoService
 {
@@ -31,7 +35,7 @@ public class DemoServiceImpl implements DemoService
      * @return
      */
     @Override
-    public Student findStudentByName(Student student)
+    public Student findStudentByName(@RequestBody(required = false) Student student)
     {
         Student studentInfo = null;
         try
@@ -52,13 +56,14 @@ public class DemoServiceImpl implements DemoService
      * @return
      */
     @Override
-    public ResponseBase addStudent(Student student)
+    public ResponseBase addStudent(@RequestBody(required = false) Student student)
     {
         ResponseBase responseBase = new ResponseBase();
         try
         {
             int infl = demoMapper.addStudent(student);
-            if(infl != 0){
+            if (infl != 0)
+            {
                 responseBase.setReturnCode("0000");
                 responseBase.setReturnDesc("操作成功");
             }

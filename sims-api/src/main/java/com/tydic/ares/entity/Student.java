@@ -1,4 +1,4 @@
-package com.tydic.simscloud.entity;
+package com.tydic.ares.entity;
 
 /**
  * 学生实体类

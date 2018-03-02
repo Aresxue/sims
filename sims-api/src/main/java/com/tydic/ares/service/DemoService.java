@@ -1,7 +1,9 @@
-package com.tydic.simscloud.service;
+package com.tydic.ares.service;
 
-import com.tydic.simscloud.entity.ResponseBase;
-import com.tydic.simscloud.entity.Student;
+import com.tydic.ares.entity.ResponseBase;
+import com.tydic.ares.entity.Student;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * 测试所用
  *
@@ -17,7 +19,9 @@ public interface DemoService
      *
      * @return
      */
+    @RequestMapping(value = "/findStudentByNameAres")
     Student findStudentByName(Student student);
+
 
     /**
      * 新增一名学生信息
@@ -26,6 +30,7 @@ public interface DemoService
      *
      * @return
      */
+    @RequestMapping(value = "/addStudentAres")
     ResponseBase addStudent(Student student);
 
 }

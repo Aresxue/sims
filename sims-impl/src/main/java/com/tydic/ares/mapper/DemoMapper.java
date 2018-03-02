@@ -1,7 +1,7 @@
-package com.tydic.simscloud.mapper;
+package com.tydic.ares.mapper;
 
 
-import com.tydic.simscloud.entity.Student;
+import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

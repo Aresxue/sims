@@ -1,20 +1,19 @@
-package com.tydic.simscloud.controller;
+package com.tydic.ares.controller;
 
-import com.tydic.simscloud.entity.ResponseBase;
-import com.tydic.simscloud.entity.Student;
-import com.tydic.simscloud.service.DemoService;
+
+import com.tydic.ares.entity.ResponseBase;
+import com.tydic.ares.entity.Student;
+import com.tydic.ares.service.DemoRemote;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 测试所用
@@ -29,10 +28,10 @@ public class DemoController
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private DemoService demoService;
+    private DemoRemote demoRemote;
 
-    @RequestMapping(value = "/studentQuery")
-    public Student studentQuery(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
+    @RequestMapping(value = "/findStudentByName")
+    public Student findStudentByName(HttpServletRequest request, @RequestBody(required = false) String parameters)
     {
         try
         {
@@ -41,7 +40,7 @@ public class DemoController
             logger.info("studentName:" + studentName);
             Student student = new Student();
             student.setStudentName(studentName);
-            student = demoService.findStudentByName(student);
+            student = demoRemote.findStudentByName(student);
             return student;
         } catch (JSONException e)
         {
@@ -54,7 +53,7 @@ public class DemoController
     }
 
     @RequestMapping(value = "/addStudent")
-    public ResponseBase addStudent(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
+    public ResponseBase addStudent(HttpServletRequest request, @RequestBody(required = false) String parameters)
     {
         try
         {
@@ -70,7 +69,7 @@ public class DemoController
             student.setClassId(Long.valueOf(classId));
             student.setStudentSex(studentSex);
             student.setStudentAge(Long.valueOf(studentAge));
-            ResponseBase responseBase = demoService.addStudent(student);
+            ResponseBase responseBase = demoRemote.addStudent(student);
             return responseBase;
         } catch (JSONException e)
         {
@@ -82,9 +81,4 @@ public class DemoController
         }
     }
 
-    @RequestMapping(value = "/hello")
-    public String sayHello(HttpServletRequest request, HttpServletResponse response)
-    {
-        return "你好啊，世界";
-    }
 }
