@@ -1,0 +1,11 @@
+server: 
+  port: 9000
+eureka: 
+  instance: 
+    hostname: discovery1
+    appname: DiscoveryServer
+  client: 
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl: 
+      defaultZone: http://discovery2:9001/eureka/
