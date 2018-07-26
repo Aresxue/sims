@@ -1,0 +1,4 @@
+## 打印更细致的sql语句，等价于将mybatis日志级别设置为trace
+#mybatis:
+#    configuration:
+#         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

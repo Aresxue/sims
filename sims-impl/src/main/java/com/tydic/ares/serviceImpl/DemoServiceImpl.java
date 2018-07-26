@@ -3,7 +3,9 @@ package com.tydic.ares.serviceImpl;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
 import com.tydic.ares.mapper.DemoMapper;
+import com.tydic.ares.mapper.StudentMapper;
 import com.tydic.ares.service.DemoService;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class DemoServiceImpl implements DemoService
     @Autowired
     private DemoMapper demoMapper;
 
+    @Autowired
+    private StudentMapper studentMapper;
+
     /**
      * 根据学生名字查询信息
      *
@@ -34,12 +39,44 @@ public class DemoServiceImpl implements DemoService
      * @return
      */
     @Override
-    public Student findStudentByName(@RequestBody(required = false) Student student)
+   /* public Student findStudentByName(@RequestBody(required = false) Student student)
     {
         Student studentInfo = null;
         try
         {
             studentInfo = demoMapper.findStudentByName(student);
+        } catch (Exception e)
+        {
+            logger.error("查询学生信息原子服务出错", e);
+        }
+        return studentInfo;
+    }*/ public Student findStudentByName(@RequestBody(required = false) Student student)
+    {
+        Student studentInfo = null;
+        try
+        {
+            studentInfo = studentMapper.findStudentByName(student);
+        } catch (Exception e)
+        {
+            logger.error("查询学生信息原子服务出错", e);
+        }
+        return studentInfo;
+    }
+
+    /**
+     * 根据学生id查询学生信息
+     *
+     * @param studentId
+     *
+     * @return
+     */
+    @Override
+    public Student findStudentById(Long studentId)
+    {
+        Student studentInfo = null;
+        try
+        {
+            studentInfo = studentMapper.findStudentById(studentId);
         } catch (Exception e)
         {
             logger.error("查询学生信息原子服务出错", e);
@@ -74,4 +111,5 @@ public class DemoServiceImpl implements DemoService
         }
         return responseBase;
     }
+
 }

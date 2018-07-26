@@ -51,6 +51,44 @@ public class DemoController
             throw new RuntimeException("阿哦,出错了");
         }
     }
+  /*  @RequestMapping(value = "/findStudentByName")
+    public Student findStudentByName(@RequestBody Student student)
+    {
+        try
+        {
+            student = demoRemote.findStudentByName(student);
+            return student;
+        } catch (JSONException e)
+        {
+            throw new RuntimeException("字符串转json出错");
+        } catch (Exception e)
+        {
+            logger.error("我有种不好的预感", e);
+            throw new RuntimeException("阿哦,出错了");
+        }
+    }*/
+
+
+    @RequestMapping(value = "/findStudentById")
+    public Student findStudentById(HttpServletRequest request, @RequestBody(required = false) String parameters)
+    {
+        try
+        {
+            JSONObject jsonObject = JSONObject.fromObject(parameters);
+            Long studentId = jsonObject.getLong("studentId");
+            logger.info("studentId:" + studentId);
+            Student student = demoRemote.findStudentById(studentId);
+            return student;
+        } catch (JSONException e)
+        {
+            throw new RuntimeException("字符串转json出错");
+        } catch (Exception e)
+        {
+            logger.error("我有种不好的预感", e);
+            throw new RuntimeException("阿哦,出错了");
+        }
+    }
+
 
     @RequestMapping(value = "/addStudent")
     public ResponseBase addStudent(HttpServletRequest request, @RequestBody(required = false) String parameters)
