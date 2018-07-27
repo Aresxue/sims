@@ -2,7 +2,7 @@ package com.tydic.ares.service;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.tydic.ares.entity.Teacher;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,4 +45,7 @@ public interface DemoService
      */
     @RequestMapping(value = "/findStudentByIdAres")
     Student findStudentById(@RequestParam("studentId")Long studentId);
+
+    @RequestMapping(value = "/JPAfindStudentById")
+    Teacher JPAfindStudentById(@RequestParam("studentId")Long studentId);
 }

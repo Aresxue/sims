@@ -2,6 +2,8 @@ package com.tydic.ares.serviceImpl;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
+import com.tydic.ares.entity.Teacher;
+import com.tydic.ares.jpa.TeacherJPA;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
 import com.tydic.ares.service.DemoService;
@@ -30,6 +32,9 @@ public class DemoServiceImpl implements DemoService
 
     @Autowired
     private StudentMapper studentMapper;
+
+    @Autowired
+    private TeacherJPA teacherJPA;
 
     /**
      * 根据学生名字查询信息
@@ -82,6 +87,22 @@ public class DemoServiceImpl implements DemoService
             logger.error("查询学生信息原子服务出错", e);
         }
         return studentInfo;
+    }
+
+
+    /**
+     * JPA版
+     * 根据学生id查询学生信息
+     *
+     * @param studentId
+     *
+     * @return
+     */
+    @Override
+    public Teacher JPAfindStudentById(Long studentId)
+    {
+        //使用findById查询
+        return teacherJPA.findOne(studentId);
     }
 
     /**
