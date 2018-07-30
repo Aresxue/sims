@@ -2,9 +2,6 @@ package com.tydic.ares.service;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 测试所用
@@ -21,7 +18,6 @@ public interface DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByNameAres")
     Student findStudentByName(Student student);
 
 
@@ -32,7 +28,6 @@ public interface DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/addStudentAres")
     ResponseBase addStudent(Student student);
 
     /**
@@ -43,6 +38,5 @@ public interface DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByIdAres")
-    Student findStudentById(@RequestParam("studentId")Long studentId);
+    Student findStudentById(Long studentId);
 }
