@@ -28,7 +28,7 @@
     </properties>-->
 
     <dependencies>
-        <dependency>
+     <!--   <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -38,16 +38,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
-     <!--   <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>-->
 
         <!--spring btoot集成mybatis-->
         <dependency>
@@ -80,6 +80,10 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <!-- 目前来看有它顶starter、starter-web、start-test
+                scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency
+                相当于导入了spring-cloud-dependencies所有包
+                使用方式暂且不是很懂，尽量不用-->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
