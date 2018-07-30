@@ -44,10 +44,10 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
-     <!--   <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!--spring btoot集成mybatis-->
         <dependency>
