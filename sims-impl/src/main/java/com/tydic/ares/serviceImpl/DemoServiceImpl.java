@@ -5,7 +5,6 @@ import com.tydic.ares.entity.Student;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
 import com.tydic.ares.service.DemoService;
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentByName")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
     @Override
    /* public Student findStudentByName(@RequestBody(required = false) Student student)
     {
@@ -72,7 +71,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentById")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentById")
     @Override
     public Student findStudentById(Long studentId)
     {
@@ -94,7 +93,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/demo/addStudent")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl/addStudent")
     @Override
     public ResponseBase addStudent(@RequestBody(required = false) Student student)
     {
