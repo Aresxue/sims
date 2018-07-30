@@ -20,7 +20,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentByName")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
     Student findStudentByName(Student student);
 
 
@@ -31,7 +31,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/addStudent")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl//addStudent")
     ResponseBase addStudent(Student student);
 
     /**
@@ -42,6 +42,6 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentById")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl//findStudentById")
     Student findStudentById(@RequestParam("studentId")Long studentId);
 }
