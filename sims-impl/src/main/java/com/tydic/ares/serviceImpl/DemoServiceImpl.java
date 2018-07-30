@@ -39,7 +39,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByNameAres")
+    @RequestMapping(value = "/demo/findStudentByName")
     @Override
    /* public Student findStudentByName(@RequestBody(required = false) Student student)
     {
@@ -72,7 +72,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/addStudentAres")
+    @RequestMapping(value = "/demo/findStudentById")
     @Override
     public Student findStudentById(Long studentId)
     {
@@ -94,7 +94,7 @@ public class DemoServiceImpl implements DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByIdAres")
+    @RequestMapping(value = "/demo/addStudent")
     @Override
     public ResponseBase addStudent(@RequestBody(required = false) Student student)
     {

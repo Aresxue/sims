@@ -1,4 +1,4 @@
-package com.tydic.ares.service;
+package com.tydic.ares.remote;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
@@ -20,7 +20,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByNameAres")
+    @RequestMapping(value = "/demo/findStudentByName")
     Student findStudentByName(Student student);
 
 
@@ -31,7 +31,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/addStudentAres")
+    @RequestMapping(value = "/demo/addStudent")
     ResponseBase addStudent(Student student);
 
     /**
@@ -42,6 +42,6 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/findStudentByIdAres")
+    @RequestMapping(value = "/demo/findStudentById")
     Student findStudentById(@RequestParam("studentId")Long studentId);
 }
