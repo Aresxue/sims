@@ -3,7 +3,7 @@ package com.tydic.ares.serviceImpl;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
 import com.tydic.ares.mapper.DemoMapper;
-import com.tydic.ares.service.DemoService;
+import com.tydic.ares.remote.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.tydic.ares.service;
+package com.tydic.ares.remote;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 

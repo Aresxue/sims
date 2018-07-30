@@ -3,7 +3,7 @@ package com.tydic.ares.controller;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
-import com.tydic.ares.service.DemoRemote;
+import com.tydic.ares.remote.DemoRemote;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
