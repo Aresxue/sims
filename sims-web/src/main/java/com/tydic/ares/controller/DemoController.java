@@ -119,4 +119,10 @@ public class DemoController
         }
     }
 
+    @RequestMapping(value = "/love")
+    public String love(HttpServletRequest request)
+    {
+       return "8080";
+    }
+
 }

@@ -24,6 +24,7 @@
 		<module>sims-api</module>
 		<module>sims-impl</module>
 		<module>sims-web</module>
+		<module>sims-zuul</module>
 	</modules>
 
 
@@ -68,6 +69,11 @@
 			<dependency>
 				<groupId>com.tydic</groupId>
 				<artifactId>sims-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tydic</groupId>
+				<artifactId>sims-zuul</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
