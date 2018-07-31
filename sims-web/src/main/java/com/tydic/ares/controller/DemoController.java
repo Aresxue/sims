@@ -1,6 +1,7 @@
 package com.tydic.ares.controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
 import net.sf.json.JSONException;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,13 +32,14 @@ public class DemoController
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     //配合RestTemplate第二种方式
-//    @Autowired
-//    private LoadBalancerClient loadBalancerClient;
+    //    @Autowired
+    //    private LoadBalancerClient loadBalancerClient;
 
     //配合第三种方法
     @Autowired
     private RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod = "sayError")
     @RequestMapping(value = "/findStudentByName")
     public Student findStudentByName(HttpServletRequest request, @RequestBody(required = false) String parameters)
     {
@@ -66,7 +69,7 @@ public class DemoController
             String url = String.format("http://%s:%s%s", serviceInstance.getHost(), serviceInstance.getPort(), "/com/tydic/ares/serviceImpl/findStudentByName");
             student = restTemplate.postForObject(url, student, Student.class);
 */
-//第三种，目前来看最好的方法
+            //第三种，目前来看最好的方法
             // TODO: 2018/7/30 后续优化以第三种为基础，将 restTemplate改为注入模式，利用自定义注解将bean注入，注入之后的实际操为restTemplate改为注入模式根据配置文件尽心远程http调用，
             // TODO:生产请求url为类全名名加方法名，配置项配置实例名，这样可完全保证无冲突
             student = restTemplate.postForObject("http://SIMS-IMPL/com/tydic/ares/serviceImpl/findStudentByName", student, Student.class);
@@ -149,4 +152,13 @@ public class DemoController
         }
     }
 
+//这个方法的请求和相应入参类型和个数要与原方法
+    public Student sayError(HttpServletRequest request, String parameterst)
+    {
+        Student student = new Student();
+        student.setStudentName("我有问题啊");
+        student.setStudentAge(10000L);
+        logger.error("我好像出错了兄弟");
+        return student;
+    }
 }
