@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Ares
  * @date 2018/3/2 16:48
  */
-@FeignClient("SIMS-IMPL")
+@FeignClient(value = "SIMS-IMPL", fallback = DemoRemoteHystric.class)
 public interface DemoRemote
 {
     /**
