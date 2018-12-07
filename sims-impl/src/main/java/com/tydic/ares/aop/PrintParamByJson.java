@@ -48,7 +48,7 @@ public class PrintParamByJson
             }
         } catch (JsonProcessingException e)
         {
-            logger.error(ExceptionUtils.getMessage(e));
+            logger.error(ExceptionUtils.getStackTrace(e));
         }
 
         logger.info("方法{}入参为: {}", signature.getName(), stringJoiner);
@@ -58,7 +58,7 @@ public class PrintParamByJson
             logger.info("方法{}出参为: {}", signature.getName(), mapper.writeValueAsString(object));
         } catch (Throwable e)
         {
-            logger.error(ExceptionUtils.getMessage(e));
+            logger.error(ExceptionUtils.getStackTrace(e));
         }
         return object;
     }
