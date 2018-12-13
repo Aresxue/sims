@@ -1,6 +1,7 @@
 package com.tydic.ares.mapper;
 
 
+import com.tydic.ares.annotation.TrackTime;
 import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,7 +18,7 @@ public interface DemoMapper
      *
      * @return
      */
-
+    @TrackTime
     Student findStudentByName(Student student);
 
     /**

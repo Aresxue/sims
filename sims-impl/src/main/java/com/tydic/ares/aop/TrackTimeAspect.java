@@ -22,11 +22,13 @@ public class TrackTimeAspect
 
     //这里的trackTime是注解的引用的名称，是下面的方法的引用
     @Around("@annotation(trackTime)")
-    public Object around(ProceedingJoinPoint thisJoinPoint, TrackTime trackTime) throws Throwable {
+    public Object around(ProceedingJoinPoint thisJoinPoint, TrackTime trackTime) throws Throwable
+    {
         long startTime = System.currentTimeMillis();
         Object result = thisJoinPoint.proceed();
         long timeTaken = System.currentTimeMillis() - startTime;
-        logger.info("方法{}执行时间为{}ms",thisJoinPoint.getSignature().getName(),timeTaken);
+        logger.info("方法{}执行时间为{}ms", thisJoinPoint.getSignature().getName(), timeTaken);
+//        logger.info("注解中的值: {}", trackTime.param());
         return result;
     }
 }

@@ -34,7 +34,7 @@ public class PrintParamByJson
     @Around("CommonJoinPointConfig.printParamByJson()")
     public Object arround(ProceedingJoinPoint thisJoinPoint)
     {
-        Object object = null;
+        Object result = null;
 
         ObjectMapper mapper = new ObjectMapper();
         StringJoiner stringJoiner = new StringJoiner(",");
@@ -54,12 +54,12 @@ public class PrintParamByJson
         logger.info("方法{}入参为: {}", signature.getName(), stringJoiner);
         try
         {
-            object = thisJoinPoint.proceed();
-            logger.info("方法{}出参为: {}", signature.getName(), mapper.writeValueAsString(object));
+            result = thisJoinPoint.proceed();
+            logger.info("方法{}出参为: {}", signature.getName(), mapper.writeValueAsString(result));
         } catch (Throwable e)
         {
             logger.error(ExceptionUtils.getStackTrace(e));
         }
-        return object;
+        return result;
     }
 }
