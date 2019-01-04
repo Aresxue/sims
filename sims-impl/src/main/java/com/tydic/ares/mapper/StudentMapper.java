@@ -2,9 +2,7 @@ package com.tydic.ares.mapper;
 
 import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.plugin.Signature;
 
 /**
  * @Author Ares
