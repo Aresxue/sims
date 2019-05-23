@@ -1,5 +1,6 @@
 package com.tydic.ares.serviceImpl;
 
+import com.tydic.ares.annotation.TrackTime;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
 import com.tydic.ares.mapper.DemoMapper;
@@ -40,6 +41,7 @@ public class DemoServiceImpl implements DemoService
      */
     @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
     @Override
+    @TrackTime(param = "昨夜西风凋碧树")
    /* public Student findStudentByName(@RequestBody(required = false) Student student)
     {
         Student studentInfo = null;
