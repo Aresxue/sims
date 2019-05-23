@@ -15,10 +15,6 @@
 		<groupId>com.tydic</groupId>
 		<artifactId>sims</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<!--<groupId>org.springframework.boot</groupId>-->
-		<!--<artifactId>spring-boot-starter-parent</artifactId>-->
-		<!--<version>1.5.10.RELEASE</version>-->
-		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 	</parent>
 
 <!--	<properties>

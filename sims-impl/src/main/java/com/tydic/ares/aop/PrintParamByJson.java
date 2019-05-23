@@ -2,18 +2,14 @@ package com.tydic.ares.aop;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.scripts.JO;
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 
 import java.util.StringJoiner;
 
@@ -37,14 +33,18 @@ public class PrintParamByJson
         Object result = null;
 
         ObjectMapper mapper = new ObjectMapper();
-        StringJoiner stringJoiner = new StringJoiner(",");
+        StringJoiner stringJoiner = null;
         Signature signature = thisJoinPoint.getSignature();
         Object[] args = thisJoinPoint.getArgs();
         try
         {
             for (Object o : args)
             {
-                stringJoiner.add(o.getClass().getSimpleName() + ":" + mapper.writeValueAsString(o));
+                if (null != o)
+                {
+                    stringJoiner = new StringJoiner(",");
+                    stringJoiner.add(o.getClass().getSimpleName() + ":" + mapper.writeValueAsString(o));
+                }
             }
         } catch (JsonProcessingException e)
         {
