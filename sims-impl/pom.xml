@@ -49,7 +49,7 @@
         </dependency>
 
 
-        <!--spring btoot集成mybatis-->
+        <!--spring boot集成mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
