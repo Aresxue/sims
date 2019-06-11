@@ -21,6 +21,9 @@
 
 	<modules>
 		<module>sims-discovery-server</module>
+		<module>base-expand</module>
+		<module>authorization-api</module>
+		<module>authorization-impl</module>
 		<module>sims-api</module>
 		<module>sims-impl</module>
 		<module>sims-web</module>
@@ -69,6 +72,36 @@
 				<groupId>com.tydic</groupId>
 				<artifactId>sims-web</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>base-expand</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>authorization-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>authorization-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<!-- 目前来看有它顶starter、starter-web、start-test
+                scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency
+                相当于导入了spring-cloud-dependencies所有包
+                使用方式暂且不是很懂，尽量不用-->
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -26,8 +26,14 @@ public class PrintParamByJson
 {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    //环绕通知,环绕增强，相当于MethodInterceptor
-    @Around("CommonJoinPointConfig.printParamByJson()")
+    /**
+     * @Author: Ares
+     * @Description: 环绕通知,环绕增强，相当于MethodInterceptor
+     * @Date: 2019/6/6 13:54
+     * @Param: [thisJoinPoint] 请求参数
+     * @return: java.lang.Object 响应参数
+     **/
+    @Around("com.tydic.ares.aop.CommonJoinPointConfig.printParamByJson()")
     public Object arround(ProceedingJoinPoint thisJoinPoint)
     {
         Object result = null;

@@ -1,6 +1,5 @@
 package com.tydic.ares.aop;
 
-import com.tydic.ares.annotation.TrackTime;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

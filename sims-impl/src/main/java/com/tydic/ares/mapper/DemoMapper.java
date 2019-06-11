@@ -2,12 +2,17 @@ package com.tydic.ares.mapper;
 
 
 import com.tydic.ares.annotation.TrackTime;
+import com.tydic.ares.entity.SchoolClass;
 import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 测试mybatis
  */
+@Repository
 @Mapper
 public interface DemoMapper
 {
@@ -29,4 +34,6 @@ public interface DemoMapper
      * @return
      */
     int addStudent(Student student);
+
+    List<Student> findStudentByNameTest(SchoolClass schoolClass);
 }

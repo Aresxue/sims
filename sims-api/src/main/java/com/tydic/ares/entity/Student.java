@@ -63,4 +63,10 @@ public class Student
     {
         this.studentAge = studentAge;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Student{" + "studentId=" + studentId + ", classId=" + classId + ", studentName='" + studentName + '\'' + ", studentSex='" + studentSex + '\'' + ", studentAge=" + studentAge + '}';
+    }
 }

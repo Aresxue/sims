@@ -3,11 +3,11 @@ package com.tydic.ares.aop;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
- * @Author Ares
- * @Date 2018/12/5 17:33
- * @Description:切点管理公共类
+ * @Author: Ares
+ * @Date: 2018/12/5 17:33
+ * @Description: 切点管理公共类
  * 集中管理切点定义
- * @Version JDK 1.8
+ * @Version: JDK 1.8
  */
 public class CommonJoinPointConfig
 {

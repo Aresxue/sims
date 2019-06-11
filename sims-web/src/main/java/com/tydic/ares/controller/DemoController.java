@@ -1,6 +1,7 @@
 package com.tydic.ares.controller;
 
 
+import com.asiainfo.ares.function.AuthorizationFuncService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
@@ -11,10 +12,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * 测试所用
@@ -26,7 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/demo")
 public class DemoController
 {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
 
     //配合RestTemplate第二种方式
     //    @Autowired
@@ -35,6 +42,9 @@ public class DemoController
     //配合第三种方法
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private AuthorizationFuncService authorizationFuncService;
 
     @HystrixCommand(fallbackMethod = "sayError")
     @RequestMapping(value = "/findStudentByName")
@@ -81,23 +91,6 @@ public class DemoController
             throw new RuntimeException("阿哦,出错了");
         }
     }
-  /*  @RequestMapping(value = "/findStudentByName")
-    public Student findStudentByName(@RequestBody Student student)
-    {
-        try
-        {
-            student = demoRemote.findStudentByName(student);
-            return student;
-        } catch (JSONException e)
-        {
-            throw new RuntimeException("字符串转json出错");
-        } catch (Exception e)
-        {
-            logger.error("我有种不好的预感", e);
-            throw new RuntimeException("阿哦,出错了");
-        }
-    }*/
-
 
     @RequestMapping(value = "/findStudentById")
     public Student findStudentById(HttpServletRequest request, @RequestBody(required = false) String parameters)
@@ -149,13 +142,51 @@ public class DemoController
         }
     }
 
-//这个方法的请求和相应入参类型和个数要与原方法
-    public Student sayError(HttpServletRequest request, String parameterst)
+    //这个方法的请求和相应入参类型和个数要与原方法
+    public Student sayError(HttpServletRequest request, String parameters)
     {
         Student student = new Student();
         student.setStudentName("我有问题啊");
         student.setStudentAge(10000L);
         logger.error("我好像出错了兄弟");
         return student;
+    }
+
+    @RequestMapping(value = "/authorization")
+    public void authorization(HttpServletRequest request)
+    {
+        authorizationFuncService.authorization();
+    }
+
+    @RequestMapping(value = "/testRequest")
+    public void testRequest(@RequestBody Student student)
+    {
+        logger.info("testRequest: "+student.getStudentName());
+    }
+
+    /**
+     * @Author: Ares
+     * @Description: body的参数是以流的形式(也可能是二进制)
+     * RequestBody注解的作用就是把该流的数据绑定到参数
+     * @Date: 2019/6/8 15:52
+     * @Param: [request, student] 请求参数
+     * @return: void 响应参数
+     **/
+    @RequestMapping(value = "/testRequest1")
+    public void testRequest1(HttpServletRequest request, Student student) throws IOException
+    {
+        logger.info(request.getQueryString());
+        request.getParameterMap().forEach((k, v) -> logger.info(Arrays.toString(v)));
+        logger.info("testRequest1: "+student.getStudentName());
+
+        //这种方式中文会变为unicode
+        request.setCharacterEncoding("utf8");
+        BufferedReader br =request.getReader();
+        String str = null;
+        StringBuilder wholeStr = new StringBuilder();
+        while((str = br.readLine()) != null){
+            wholeStr.append(str);
+        }
+        logger.info(wholeStr.toString());
     }
 }
