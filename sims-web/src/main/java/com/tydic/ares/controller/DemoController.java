@@ -12,15 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -161,7 +158,7 @@ public class DemoController
     @RequestMapping(value = "/testRequest")
     public void testRequest(@RequestBody Student student)
     {
-        logger.info("testRequest: "+student.getStudentName());
+        logger.info("testRequest: " + student.getStudentName());
     }
 
     /**
@@ -177,14 +174,15 @@ public class DemoController
     {
         logger.info(request.getQueryString());
         request.getParameterMap().forEach((k, v) -> logger.info(Arrays.toString(v)));
-        logger.info("testRequest1: "+student.getStudentName());
+        logger.info("testRequest1: " + student.getStudentName());
 
         //这种方式中文会变为unicode
         request.setCharacterEncoding("utf8");
-        BufferedReader br =request.getReader();
+        BufferedReader br = request.getReader();
         String str = null;
         StringBuilder wholeStr = new StringBuilder();
-        while((str = br.readLine()) != null){
+        while((str = br.readLine()) != null)
+        {
             wholeStr.append(str);
         }
         logger.info(wholeStr.toString());

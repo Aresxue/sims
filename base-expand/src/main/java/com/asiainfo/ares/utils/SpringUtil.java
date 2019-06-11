@@ -3,7 +3,6 @@ package com.asiainfo.ares.utils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -111,7 +110,7 @@ public class SpringUtil implements ApplicationContextAware
      * @Description: 通过类型获取所有bean
      * @Date: 2019/6/1 14:23
      * @Param: [clazz] 请求参数
-     * @return: java.util.Map<java.lang.String   ,   T> 响应参数
+     * @return: java.util.Map<java.lang.String               ,               T> 响应参数
      **/
     public static <T> Map<String, T> getBeansOfType(Class<T> clazz)
     {
@@ -123,7 +122,7 @@ public class SpringUtil implements ApplicationContextAware
      * @Description: 获取所有的Bean
      * @Date: 2019/6/1 14:28
      * @Param: [] 请求参数
-     * @return: java.util.List<java.lang.Class<?>> 响应参数
+     * @return: java.util.List<java.lang.Class   <   ?>> 响应参数
      **/
     public static List<Class<?>> getAllBeans()
     {

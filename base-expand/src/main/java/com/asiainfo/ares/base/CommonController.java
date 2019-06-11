@@ -21,7 +21,7 @@ public class CommonController
 {
     private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
 
-    private static final Map<String, RemoteProxyService> INNER_SERVICE_MAP = new HashMap<> ();
+    private static final Map<String, RemoteProxyService> INNER_SERVICE_MAP = new HashMap<>();
 
     /**
      * @Author: Ares
@@ -31,7 +31,8 @@ public class CommonController
      * @return: java.lang.Object 响应参数
      **/
     @RequestMapping(value = "/invoke")
-    public Object invoke(HttpServletRequest request){
+    public Object invoke(HttpServletRequest request)
+    {
         logger.info(request.getParameter("serviceId"));
         return null;
     }
@@ -44,7 +45,8 @@ public class CommonController
      * @return: java.lang.Object 响应参数
      **/
     @RequestMapping(value = "/innerInvoke")
-    public Object innerInvoke(HttpServletRequest request){
+    public Object innerInvoke(HttpServletRequest request)
+    {
         logger.info(request.getParameter("serviceId"));
         return null;
     }

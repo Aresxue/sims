@@ -46,7 +46,8 @@ public class RemoteServiceFactory implements FactoryBean
     @Override
     public Object getObject() throws Exception
     {
-        if(null == remoteInvokeHandler){
+        if (null == remoteInvokeHandler)
+        {
             remoteInvokeHandler = new RemoteInvokeHandler();
         }
         return remoteInvokeHandler.remoteInvoke(remoteService, serviceCenter);

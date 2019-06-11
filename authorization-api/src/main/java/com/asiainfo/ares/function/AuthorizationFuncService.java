@@ -1,7 +1,6 @@
 package com.asiainfo.ares.function;
 
 import com.asiainfo.ares.base.RemoteRef;
-import org.springframework.stereotype.Component;
 
 /**
  * @Author: Ares

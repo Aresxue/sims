@@ -11,9 +11,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 //以下两个注解用以启用xml配置文件
 //@Configuration
 //@ImportResource(locations = {"classpath:application-aop.xml"})
-public class SimsImplApplication {
+public class SimsImplApplication
+{
 
-	public static void main(String[] args) {
-		SpringApplication.run(SimsImplApplication.class, args);
-	}
+    public static void main(String[] args)
+    {
+        SpringApplication.run(SimsImplApplication.class, args);
+    }
 }

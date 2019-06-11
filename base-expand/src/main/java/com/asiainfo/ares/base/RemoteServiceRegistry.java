@@ -57,7 +57,8 @@ public class RemoteServiceRegistry implements BeanDefinitionRegistryPostProcesso
             logger.error("读取文件并转为远程代理服务时出错: ", e);
         }
 
-        if(!CollectionUtils.isEmpty(serviceList)){
+        if (!CollectionUtils.isEmpty(serviceList))
+        {
             for (RemoteProxyService proxyService : serviceList)
             {
                 logger.info("开始生成远程代理服务,服务id: {}", proxyService.getServiceId());

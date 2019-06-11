@@ -8,8 +8,8 @@
     <bean id="trackTimeAspectXml" class="com.tydic.ares.aop.TrackTimeAspectXml"/>
 
     <aop:config>
-        <aop:aspect id = "time" ref="trackTimeAspectXml">
-            <aop:pointcut id = "trackTimePoint" expression="execution(* com.tydic.ares.serviceImpl.*.*(..))"/>
+        <aop:aspect id="time" ref="trackTimeAspectXml">
+            <aop:pointcut id="trackTimePoint" expression="execution(* com.tydic.ares.serviceImpl.*.*(..))"/>
             <aop:around method="printParamByJson" pointcut-ref="trackTimePoint"/>
         </aop:aspect>
     </aop:config>

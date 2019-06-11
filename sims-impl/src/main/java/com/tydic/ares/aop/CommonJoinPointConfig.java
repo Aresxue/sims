@@ -13,5 +13,7 @@ public class CommonJoinPointConfig
 {
     //将函数入参出参统一Json化打印到控制台
     @Pointcut("execution(* com.tydic.ares.serviceImpl.*.*(..))")
-    public void printParamByJson() {}
+    public void printParamByJson()
+    {
+    }
 }

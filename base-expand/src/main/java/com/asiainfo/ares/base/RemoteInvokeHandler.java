@@ -31,9 +31,7 @@ public class RemoteInvokeHandler
 
     public <T> T remoteInvoke(final Class<T> remoteService, String serviceCenter)
     {
-        @SuppressWarnings(value = "unchecked")
-        T result = (T) Proxy.newProxyInstance(RemoteInvokeHandler.class.getClassLoader(),
-                new Class<?>[]{remoteService}, (proxy, method, args) -> {
+        @SuppressWarnings(value = "unchecked") T result = (T) Proxy.newProxyInstance(RemoteInvokeHandler.class.getClassLoader(), new Class<?>[]{remoteService}, (proxy, method, args) -> {
             MultiValueMap<String, Object> remoteRequest = new LinkedMultiValueMap<>();
 
             RemoteRef remoteRef = remoteService.getAnnotation(RemoteRef.class);

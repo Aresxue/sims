@@ -28,7 +28,7 @@ public class PrintParamByJson
 
     /**
      * @Author: Ares
-     * @Description: 环绕通知,环绕增强，相当于MethodInterceptor
+     * @Description: 环绕通知, 环绕增强，相当于MethodInterceptor
      * @Date: 2019/6/6 13:54
      * @Param: [thisJoinPoint] 请求参数
      * @return: java.lang.Object 响应参数
