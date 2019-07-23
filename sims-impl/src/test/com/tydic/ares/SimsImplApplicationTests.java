@@ -1,6 +1,5 @@
 package com.tydic.ares;
 
-import com.tydic.ares.entity.SchoolClass;
 import com.tydic.ares.mapper.DemoMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,15 +19,15 @@ public class SimsImplApplicationTests
     @Autowired
     DemoMapper demoMapper;
 
-  /*  @Test
+    @Test
     public void test() throws Exception
     {
         stringRedisTemplate.opsForValue().set("ares", "xue");
         String result = stringRedisTemplate.opsForValue().get("ares");
         System.out.println(result);
-    }*/
+    }
 
-    @Test
+  /*  @Test
     public void test() throws Exception
     {
         SchoolClass classes = new SchoolClass();
@@ -36,5 +35,5 @@ public class SimsImplApplicationTests
         classes.setClassId(2L);
         System.out.println(demoMapper.findStudentByNameTest(classes));
         System.out.println(classes);
-    }
+    }*/
 }

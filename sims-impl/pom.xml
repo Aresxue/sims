@@ -15,6 +15,10 @@
         <groupId>com.tydic</groupId>
         <artifactId>sims</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <!--<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <!--<properties>
@@ -24,9 +28,13 @@
     </properties>-->
 
     <dependencies>
+        <!--   <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter</artifactId>
+           </dependency>-->
         <dependency>
-            <groupId>com.tydic</groupId>
-            <artifactId>sims-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -66,6 +74,11 @@
             <version>1.0.31</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.tydic</groupId>
+            <artifactId>sims-api</artifactId>
+        </dependency>
+
         <!--spring切面aop依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -97,13 +110,28 @@
             <version>1.1.16</version>
         </dependency>
 
-        <!-- actuator 监控 -->
-        <!--    <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-            </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <!-- 目前来看有它顶starter、starter-web、start-test
+                scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency
+                相当于导入了spring-cloud-dependencies所有包
+                使用方式暂且不是很懂，尽量不用-->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
