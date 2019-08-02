@@ -25,6 +25,9 @@ public class SimsImplApplicationTests
         stringRedisTemplate.opsForValue().set("ares", "xue");
         String result = stringRedisTemplate.opsForValue().get("ares");
         System.out.println(result);
+        stringRedisTemplate.delete("ares");
+        result = stringRedisTemplate.opsForValue().get("ares");
+        System.out.println(result);
     }
 
   /*  @Test

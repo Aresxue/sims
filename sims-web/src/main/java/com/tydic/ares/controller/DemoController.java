@@ -74,8 +74,6 @@ public class DemoController
             student = restTemplate.postForObject(url, student, Student.class);
 */
             //第三种，目前来看最好的方法
-            // TODO: 2018/7/30 后续优化以第三种为基础，将 restTemplate改为注入模式，利用自定义注解将bean注入，注入之后的实际操为restTemplate改为注入模式根据配置文件尽心远程http调用，
-            // TODO:生产请求url为类全名名加方法名，配置项配置实例名，这样可完全保证无冲突
             student = restTemplate.postForObject("http://SIMS-IMPL/com/tydic/ares/serviceImpl/findStudentByName", student, Student.class);
 
             return student;

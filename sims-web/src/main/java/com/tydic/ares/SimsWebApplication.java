@@ -1,6 +1,8 @@
 package com.tydic.ares;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -14,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 public class SimsWebApplication
 {
+    private final static Logger logger = LoggerFactory.getLogger(SimsWebApplication.class);
 
     @Bean
     @LoadBalanced
