@@ -88,21 +88,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <!-- 目前来看有它顶starter、starter-web、start-test
-                scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency
-                相当于导入了spring-cloud-dependencies所有包-->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
