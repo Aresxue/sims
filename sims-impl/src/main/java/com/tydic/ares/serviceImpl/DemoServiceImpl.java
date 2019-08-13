@@ -96,6 +96,25 @@ public class DemoServiceImpl implements DemoService
      * @return
      */
     @RequestMapping(value = "/com/tydic/ares/serviceImpl/addStudent")
+    @Autowired
+    private TeacherJPA teacherJPA;
+
+
+    /**
+     * JPA版
+     * 根据学生id查询学生信息
+     *
+     * @param studentId
+     *
+     * @return
+     */
+    @Override
+    public Teacher JPAfindStudentById(Long studentId)
+    {
+        //使用findById查询
+        return teacherJPA.findOne(studentId);
+    }
+
     @Override
     public ResponseBase addStudent(@RequestBody(required = false) Student student)
     {
