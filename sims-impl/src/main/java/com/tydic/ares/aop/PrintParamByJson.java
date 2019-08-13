@@ -1,19 +1,13 @@
 package com.tydic.ares.aop;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.scripts.JO;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 
 import java.util.StringJoiner;
 
@@ -28,38 +22,38 @@ import java.util.StringJoiner;
 @Configuration
 public class PrintParamByJson
 {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(PrintParamByJson.class);
 
-    //环绕通知,环绕增强，相当于MethodInterceptor
-    @Around("CommonJoinPointConfig.printParamByJson()")
-    public Object arround(ProceedingJoinPoint thisJoinPoint)
+    /**
+     * @Author: Ares
+     * @Description: 环绕通知, 环绕增强, 相当于MethodInterceptor
+     * @Date: 2019/6/6 13:54
+     * @Param: [thisJoinPoint] 请求参数
+     * @return: java.lang.Object 响应参数
+     **/
+    @Around("com.tydic.ares.aop.CommonJoinPointConfig.printParamByJson()")
+    public Object around(ProceedingJoinPoint thisJoinPoint) throws Throwable
     {
         Object result = null;
 
         ObjectMapper mapper = new ObjectMapper();
-        StringJoiner stringJoiner = new StringJoiner(",");
+        StringJoiner stringJoiner = null;
         Signature signature = thisJoinPoint.getSignature();
         Object[] args = thisJoinPoint.getArgs();
-        try
+        for (Object o : args)
         {
-            for (Object o : args)
+            if (null != o)
             {
+                stringJoiner = new StringJoiner(",");
                 stringJoiner.add(o.getClass().getSimpleName() + ":" + mapper.writeValueAsString(o));
             }
-        } catch (JsonProcessingException e)
-        {
-            logger.error(ExceptionUtils.getStackTrace(e));
         }
 
-        logger.info("方法{}入参为: {}", signature.getName(), stringJoiner);
-        try
-        {
-            result = thisJoinPoint.proceed();
-            logger.info("方法{}出参为: {}", signature.getName(), mapper.writeValueAsString(result));
-        } catch (Throwable e)
-        {
-            logger.error(ExceptionUtils.getStackTrace(e));
-        }
+        LOGGER.info("方法{}入参为: {}", signature.getName(), stringJoiner);
+        result = thisJoinPoint.proceed();
+        LOGGER.info("方法{}出参为: {}", signature.getName(), mapper.writeValueAsString(result));
+
         return result;
     }
+
 }
