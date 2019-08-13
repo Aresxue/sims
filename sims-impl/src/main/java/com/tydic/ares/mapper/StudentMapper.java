@@ -3,6 +3,7 @@ package com.tydic.ares.mapper;
 import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Author Ares
@@ -11,6 +12,7 @@ import org.apache.ibatis.annotations.Select;
  * @Version JDK 1.8
  */
 @Mapper
+@Repository
 public interface StudentMapper
 {
     /**

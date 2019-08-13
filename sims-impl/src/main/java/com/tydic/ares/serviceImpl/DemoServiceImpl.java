@@ -3,9 +3,11 @@ package com.tydic.ares.serviceImpl;
 import com.tydic.ares.annotation.TrackTime;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
+import com.tydic.ares.entity.Teacher;
+import com.tydic.ares.jpa.TeacherJPA;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
-import com.tydic.ares.service.DemoService;
+import com.tydic.ares.remote.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 /**
  * 测试所用
@@ -31,6 +35,9 @@ public class DemoServiceImpl implements DemoService
 
     @Autowired
     private StudentMapper studentMapper;
+
+    @Autowired
+    private TeacherJPA teacherJPA;
 
     /**
      * 根据学生名字查询信息
@@ -89,30 +96,38 @@ public class DemoServiceImpl implements DemoService
     }
 
     /**
-     * 新增一名学生信息
+     * 新增一名教师信息
      *
-     * @param student
+     * @param teacher
      *
      * @return
      */
     @RequestMapping(value = "/com/tydic/ares/serviceImpl/addStudent")
-    @Autowired
-    private TeacherJPA teacherJPA;
+    public ResponseBase addStudentJPA(@RequestBody(required = false) Teacher teacher)
+    {
+        ResponseBase responseBase = new ResponseBase();
+
+        teacherJPA.save(teacher);
+
+        responseBase.setReturnCode("0000");
+        responseBase.setReturnDesc("操作成功");
+        return responseBase;
+    }
 
 
     /**
-     * JPA版
-     * 根据学生id查询学生信息
+     * 根据教师id查询教师信息
      *
-     * @param studentId
+     * @param teacherId
      *
      * @return
      */
     @Override
-    public Teacher JPAfindStudentById(Long studentId)
+    public Teacher findStudentByIdJPA(Long teacherId)
     {
         //使用findById查询
-        return teacherJPA.findOne(studentId);
+        Optional<Teacher> optional = teacherJPA.findById(teacherId);
+        return optional.orElseGet(Teacher::new);
     }
 
     @Override

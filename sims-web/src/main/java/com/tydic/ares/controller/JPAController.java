@@ -31,7 +31,7 @@ public class JPAController
         JSONObject jsonObject = JSONObject.fromObject(parameters);
         Long teacherId = jsonObject.getLong("teacherId");
         logger.info("teacherId:" + teacherId);
-        Teacher teacher = demoRemote.JPAfindStudentById(teacherId);
+        Teacher teacher = demoRemote.findStudentByIdJPA(teacherId);
         return teacher;
     }
 }
