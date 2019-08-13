@@ -18,17 +18,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class TrackTimeAspect
 {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TrackTimeAspect.class);
 
-    //这里的trackTime是注解的引用的名称，是下面的方法的引用
+    /**
+     * @Author: Ares
+     * @Description: 这里的trackTime是注解的引用的名称，是下面的方法的引用
+     * @Date: 2019/8/13 15:16
+     * @Param: 请求参数
+     * @Return: 响应参数
+     */
     @Around("@annotation(trackTime)")
     public Object around(ProceedingJoinPoint thisJoinPoint, TrackTime trackTime) throws Throwable
     {
         long startTime = System.currentTimeMillis();
         Object result = thisJoinPoint.proceed();
         long timeTaken = System.currentTimeMillis() - startTime;
-        logger.info("方法{}执行时间为{}ms", thisJoinPoint.getSignature().getName(), timeTaken);
-        //        logger.info("注解中的值: {}", trackTime.param());
+        LOGGER.info("方法{}执行时间为{}ms", thisJoinPoint.getSignature().getName(), timeTaken);
+        //        LOGGER.info("注解中的值: {}", trackTime.param());
         return result;
     }
 }

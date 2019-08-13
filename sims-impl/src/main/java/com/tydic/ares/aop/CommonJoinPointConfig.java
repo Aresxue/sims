@@ -11,7 +11,13 @@ import org.aspectj.lang.annotation.Pointcut;
  */
 public class CommonJoinPointConfig
 {
-    //将函数入参出参统一Json化打印到控制台
+    /**
+     * @Author: Ares
+     * @Description: 将函数入参出参统一Json化打印到控制台
+     * @Date: 2019/8/13 15:15
+     * @Param: 请求参数
+     * @Return: 响应参数
+     */
     @Pointcut("execution(* com.tydic.ares.serviceImpl.*.*(..))")
     public void printParamByJson()
     {
