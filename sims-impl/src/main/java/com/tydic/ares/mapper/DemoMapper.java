@@ -35,5 +35,14 @@ public interface DemoMapper
      */
     int addStudent(Student student);
 
+    /**
+     * @author: Ares
+     * @description: 批量新增学生信息
+     * @date: 2019/8/30 14:32
+     * @param: [students] 请求参数
+     * @return: int 响应参数
+     */
+    int addStudentBatch(List<Student> students);
+
     List<Student> findStudentByNameTest(SchoolClass schoolClass);
 }

@@ -1,5 +1,6 @@
 package com.tydic.ares.aop;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -37,6 +38,8 @@ public class PrintParamByJson
         Object result = null;
 
         ObjectMapper mapper = new ObjectMapper();
+        // 忽略null值
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         StringJoiner stringJoiner = null;
         Signature signature = thisJoinPoint.getSignature();
         Object[] args = thisJoinPoint.getArgs();

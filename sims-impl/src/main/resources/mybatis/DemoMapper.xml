@@ -24,7 +24,14 @@
     <!-- 新增一个学生信息-->
     <insert id="addStudent" parameterType="com.tydic.ares.entity.Student">
         INSERT INTO student (student_id, class_id, student_name, student_sex, student_age)
-        VALUES (#{studentId}, #{classId}, #{studentName}, #{studentSex}, #{studentAge});
+        VALUES (#{studentId}, #{classId}, #{studentName}, #{studentSex}, #{studentAge})
+    </insert>
+    <insert id="addStudentBatch">
+        INSERT INTO student (student_id, class_id, student_name, student_sex, student_age)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.studentId}, #{item.classId}, #{item.studentName}, #{item.studentSex}, #{item.studentAge})
+        </foreach>
     </insert>
 </mapper>
 

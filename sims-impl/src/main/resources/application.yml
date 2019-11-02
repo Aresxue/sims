@@ -4,15 +4,18 @@
 #         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # redis
-#spring:
-#  redis:
-#    # redis的连接ip
-#    host: 135.0.117.48
-#    # redis默认情况下有16个分片，这里配置具体使用的分片，默认是0
-#    database: 0
-#    # 连接超时时间（毫秒)
-#    timeout: 10000ms
-#    #  springboot2.0后默认使用lettuce连接redis,底层使用的是netty框架做支撑
+
+spring:
+  redis:
+    # redis的连接ip
+    host: 127.0.0.1
+    port: 9051
+    # redis默认情况下有16个分片，这里配置具体使用的分片，默认是0
+    database: 0
+    # 连接超时时间（毫秒)
+    timeout: 10000ms
+#    password:
+    #   1.5的版本默认采用的连接池技术是jedis,springboot2.0后默认使用lettuce连接redis,底层使用的是netty框架做支撑
 #    lettuce:
 #      pool:
 #        # 连接池中的最小空闲连接 默认 0
@@ -23,8 +26,7 @@
 #        max-active: 8
 #        # 连接池中的最大空闲连接 默认 8
 #        max-idle: 8
-#    password: BILL_ACC_001#bill!123acc
-#    port: 9051
+
 
 
 love:

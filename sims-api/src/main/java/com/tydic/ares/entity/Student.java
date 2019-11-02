@@ -9,10 +9,12 @@ package com.tydic.ares.entity;
 public class Student
 {
     private Long studentId;
-    private Long classId;
+    private Integer classId;
     private String studentName;
     private String studentSex;
-    private Long studentAge;
+    private Integer studentAge;
+
+    private long testValue;
 
     public Long getStudentId()
     {
@@ -24,12 +26,12 @@ public class Student
         this.studentId = studentId;
     }
 
-    public Long getClassId()
+    public Integer getClassId()
     {
         return classId;
     }
 
-    public void setClassId(Long classId)
+    public void setClassId(Integer classId)
     {
         this.classId = classId;
     }
@@ -54,19 +56,29 @@ public class Student
         this.studentSex = studentSex;
     }
 
-    public Long getStudentAge()
+    public Integer getStudentAge()
     {
         return studentAge;
     }
 
-    public void setStudentAge(Long studentAge)
+    public void setStudentAge(Integer studentAge)
     {
         this.studentAge = studentAge;
+    }
+
+    public long getTestValue()
+    {
+        return testValue;
+    }
+
+    public void setTestValue(long testValue)
+    {
+        this.testValue = testValue;
     }
 
     @Override
     public String toString()
     {
-        return "Student{" + "studentId=" + studentId + ", classId=" + classId + ", studentName='" + studentName + '\'' + ", studentSex='" + studentSex + '\'' + ", studentAge=" + studentAge + '}';
+        return "Student{" + "studentId=" + studentId + ", classId=" + classId + ", studentName='" + studentName + '\'' + ", studentSex='" + studentSex + '\'' + ", studentAge=" + studentAge + ", testValue=" + testValue + '}';
     }
 }

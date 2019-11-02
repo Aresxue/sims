@@ -30,7 +30,7 @@ import java.util.Arrays;
 @RequestMapping(value = "/demo")
 public class DemoController
 {
-    private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DemoController.class);
 
     //配合RestTemplate第二种方式
     //    @Autowired
@@ -51,7 +51,7 @@ public class DemoController
         {
             JSONObject jsonObject = JSONObject.fromObject(parameters);
             String studentName = jsonObject.getString("studentName");
-            logger.info("studentName:" + studentName);
+            LOGGER.info("studentName:" + studentName);
             Student student = new Student();
             student.setStudentName(studentName);
 
@@ -82,7 +82,7 @@ public class DemoController
             throw new RuntimeException("字符串转json出错");
         } catch (Exception e)
         {
-            logger.error("我有种不好的预感", e);
+            LOGGER.error("我有种不好的预感", e);
             throw new RuntimeException("阿哦,出错了");
         }
     }
@@ -94,7 +94,7 @@ public class DemoController
         {
             JSONObject jsonObject = JSONObject.fromObject(parameters);
             Long studentId = jsonObject.getLong("studentId");
-            logger.info("studentId:" + studentId);
+            LOGGER.info("studentId:" + studentId);
             Student student = null;
             return student;
         } catch (JSONException e)
@@ -102,7 +102,7 @@ public class DemoController
             throw new RuntimeException("字符串转json出错");
         } catch (Exception e)
         {
-            logger.error("我有种不好的预感", e);
+            LOGGER.error("我有种不好的预感", e);
             throw new RuntimeException("阿哦,出错了");
         }
     }
@@ -122,9 +122,9 @@ public class DemoController
             Student student = new Student();
             student.setStudentName(studentName);
             student.setStudentId(Long.valueOf(studentId));
-            student.setClassId(Long.valueOf(classId));
+            student.setClassId(Integer.valueOf(classId));
             student.setStudentSex(studentSex);
-            student.setStudentAge(Long.valueOf(studentAge));
+            student.setStudentAge(Integer.valueOf(studentAge));
             ResponseBase responseBase = null;
             return responseBase;
         } catch (JSONException e)
@@ -132,7 +132,7 @@ public class DemoController
             throw new RuntimeException("字符串转json出错");
         } catch (Exception e)
         {
-            logger.error("我有种不好的预感", e);
+            LOGGER.error("我有种不好的预感", e);
             throw new RuntimeException("阿哦,出错了");
         }
     }
@@ -142,8 +142,8 @@ public class DemoController
     {
         Student student = new Student();
         student.setStudentName("我有问题啊");
-        student.setStudentAge(10000L);
-        logger.error("我好像出错了兄弟");
+        student.setStudentAge(10000);
+        LOGGER.error("我好像出错了兄弟");
         return student;
     }
 
@@ -156,7 +156,7 @@ public class DemoController
     @RequestMapping(value = "/testRequest")
     public void testRequest(@RequestBody Student student)
     {
-        logger.info("testRequest: " + student.getStudentName());
+        LOGGER.info("testRequest: " + student.getStudentName());
     }
 
     /**
@@ -170,11 +170,11 @@ public class DemoController
     @RequestMapping(value = "/testRequest1")
     public void testRequest1(HttpServletRequest request, Student student) throws IOException
     {
-        logger.info(request.getQueryString());
-        request.getParameterMap().forEach((k, v) -> logger.info(Arrays.toString(v)));
-        logger.info("testRequest1: " + student.getStudentName());
+        LOGGER.info(request.getQueryString());
+        request.getParameterMap().forEach((k, v) -> LOGGER.info(Arrays.toString(v)));
+        LOGGER.info("testRequest1: " + student.getStudentName());
 
-        //这种方式中文会变为unicode
+        // 这种方式中文会变为unicode
         request.setCharacterEncoding("utf8");
         BufferedReader br = request.getReader();
         String str = null;
@@ -183,6 +183,21 @@ public class DemoController
         {
             wholeStr.append(str);
         }
-        logger.info(wholeStr.toString());
+        LOGGER.info(wholeStr.toString());
+    }
+
+
+    /**
+     * @author: Ares
+     * @description: 测试使用Long和long接收浮点型参数是报错还是丢失精度
+     * 结论是long和Long都不会报错，但是会丢失精度
+     * @date: 2019/9/7 19:35
+     * @param: [request, param] 请求参数
+     * @return: void 响应参数
+     */
+    @RequestMapping(value = "/testLong")
+    public void testLong(HttpServletRequest request, @RequestBody Student student)
+    {
+        LOGGER.info("参数为: {}", student);
     }
 }
