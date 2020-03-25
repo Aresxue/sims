@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tydic.ares.mapper.DemoMapper">
+
+    <update id="testTeledbUpdateBalance">
+        update acct_balance_00 set balance = #{balance} where  route_id = '100000000'  and ACCT_BALANCE_ID =  '100000000' and balance = #{oldBalance}
+    </update>
+
+    <select id="testTeledbQueryBalance" resultType="com.tydic.ares.entity.AcctBalanceEntity">
+        select ACCT_BALANCE_ID,route_id,balance from ACCT_BALANCE_00 where route_id = '100000000'  and ACCT_BALANCE_ID =  '100000000'
+    </select>
+
     <select id="findStudentByName" parameterType="com.tydic.ares.entity.Student"
             resultType="com.tydic.ares.entity.Student">
         SELECT student_id, class_id, student_name, student_sex, student_age

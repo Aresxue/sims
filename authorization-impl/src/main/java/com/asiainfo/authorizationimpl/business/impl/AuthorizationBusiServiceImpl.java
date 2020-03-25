@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author: Ares
- * @Date: 2019/6/1 13:52
- * @Description:
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/6/1 13:52
+ * @description:
+ * @version: JDK 1.8
  */
 @Service
 public class AuthorizationBusiServiceImpl implements AuthorizationBusiService

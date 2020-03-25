@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author: Ares
- * @Date: 2019/6/1 13:53
- * @Description:
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/6/1 13:53
+ * @description:
+ * @version: JDK 1.8
  */
 @Service
 public class AuthorizationFuncServiceImpl implements AuthorizationFuncService

@@ -12,10 +12,10 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @Author: Ares
- * @Date: 2019/7/25 15:41
- * @Description:
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/7/25 15:41
+ * @description:
+ * @version: JDK 1.8
  */
 @Component
 @ConfigurationProperties(prefix = "love")

@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @Author Ares
- * @Date 2018/7/26 18:36
- * @Description: 教师类
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/7/26 18:36
+ * @description: 教师类
+ * @version JDK 1.8
  */
 @Entity
 @Table(name = "teacher")

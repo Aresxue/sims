@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.io.Serializable;
 
 /**
- * @Author Ares
- * @Date 2018/7/26 19:04
- * @Description:
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/7/26 19:04
+ * @description:
+ * @version JDK 1.8
  */
 public interface TeacherJPA extends JpaRepository<Teacher,Long>,JpaSpecificationExecutor<Teacher>,Serializable
 {

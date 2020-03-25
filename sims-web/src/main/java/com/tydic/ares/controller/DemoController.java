@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -153,6 +154,13 @@ public class DemoController
         authorizationFuncService.authorization();
     }
 
+    /**
+     * @author: Ares
+     * @description: 没有HttpServletRequest request只使用注解也可以取到值
+     * @date: 2020/1/7 15:46
+     * @param: [student] 请求参数
+     * @return: void 响应参数
+     */
     @RequestMapping(value = "/testRequest")
     public void testRequest(@RequestBody Student student)
     {
@@ -160,11 +168,11 @@ public class DemoController
     }
 
     /**
-     * @Author: Ares
-     * @Description: body的参数是以流的形式(也可能是二进制)
+     * @author: Ares
+     * @description: body的参数是以流的形式(也可能是二进制)
      * RequestBody注解的作用就是把该流的数据绑定到参数
-     * @Date: 2019/6/8 15:52
-     * @Param: [request, student] 请求参数
+     * @date: 2019/6/8 15:52
+     * @param: [request, student] 请求参数
      * @return: void 响应参数
      **/
     @RequestMapping(value = "/testRequest1")
@@ -199,5 +207,31 @@ public class DemoController
     public void testLong(HttpServletRequest request, @RequestBody Student student)
     {
         LOGGER.info("参数为: {}", student);
+    }
+
+    /**
+     * @author: Ares
+     * @description: 测试teledb
+     * @date: 2019/11/2 11:08
+     * @param: [request] 请求参数
+     * @return: void 响应参数
+     */
+    @RequestMapping(value = "/testTeledb")
+    public void testTeledb(HttpServletRequest request)
+    {
+        restTemplate.postForObject("http://SIMS-IMPL/com/tydic/ares/serviceImpl/testTeledb", null, Object.class);
+    }
+
+    /**
+     * @author: Ares
+     * @description: RequestParam注解提取参数
+     * @date: 2019/12/26 11:02
+     * @param: [request, accNbr, billingCycleId] 请求参数
+     * @return: void 响应参数
+     */
+    @RequestMapping(value = "/billing/acct/CreditProdFee")
+    public void testRequestParamt1(HttpServletRequest request, @RequestParam("accNbr")String accNbr, @RequestParam("billingCycleId")Integer billingCycleId) throws IOException
+    {
+        LOGGER.info("accNbr: {}, billingCycleId: {}", accNbr, billingCycleId);
     }
 }

@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Configuration;
 import java.util.StringJoiner;
 
 /**
- * @Author Ares
- * @Date 2018/12/5 17:39
- * @Description: 将入参出参Json化打印
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/12/5 17:39
+ * @description: 将入参出参Json化打印
+ * @version JDK 1.8
  */
 
 @Aspect
@@ -26,10 +26,10 @@ public class PrintParamByJson
     private static final Logger LOGGER = LoggerFactory.getLogger(PrintParamByJson.class);
 
     /**
-     * @Author: Ares
-     * @Description: 环绕通知, 环绕增强, 相当于MethodInterceptor
-     * @Date: 2019/6/6 13:54
-     * @Param: [thisJoinPoint] 请求参数
+     * @author: Ares
+     * @description: 环绕通知, 环绕增强, 相当于MethodInterceptor
+     * @date: 2019/6/6 13:54
+     * @param: [thisJoinPoint] 请求参数
      * @return: java.lang.Object 响应参数
      **/
     @Around("com.tydic.ares.aop.CommonJoinPointConfig.printParamByJson()")

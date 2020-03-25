@@ -3,10 +3,10 @@ package com.tydic.ares;
 import com.alibaba.druid.filter.config.ConfigTools;
 
 /**
- * @Author Ares
- * @Date 2018/9/25 10:04
- * @Description:阿里数据库加解密算法
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/9/25 10:04
+ * @description:阿里数据库加解密算法
+ * @version JDK 1.8
  */
 public class AliDataBaseEncrypt
 {

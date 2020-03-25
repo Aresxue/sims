@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Author: Ares
- * @Date: 2019/8/1 17:40
- * @Description: 测试Nacos的配置
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/8/1 17:40
+ * @description: 测试Nacos的配置
+ * @version: JDK 1.8
  */
 @RestController
 @RequestMapping(value = "/nacos")

@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author: Ares
- * @Date: 2019/5/31 16:40
- * @Description: 公共请求入口
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/5/31 16:40
+ * @description: 公共请求入口
+ * @version: JDK 1.8
  */
 @RestController
 @RequestMapping(value = "/common")
@@ -24,10 +24,10 @@ public class CommonController
     private static final Map<String, RemoteProxyService> INNER_SERVICE_MAP = new HashMap<>();
 
     /**
-     * @Author: Ares
-     * @Description: 统一调用地址
-     * @Date: 2019/6/10 20:21
-     * @Param: [request] 请求参数
+     * @author: Ares
+     * @description: 统一调用地址
+     * @date: 2019/6/10 20:21
+     * @param: [request] 请求参数
      * @return: java.lang.Object 响应参数
      **/
     @RequestMapping(value = "/invoke")
@@ -38,10 +38,10 @@ public class CommonController
     }
 
     /**
-     * @Author: Ares
-     * @Description: 内部实例互相调用
-     * @Date: 2019/6/10 20:22
-     * @Param: [request] 请求参数
+     * @author: Ares
+     * @description: 内部实例互相调用
+     * @date: 2019/6/10 20:22
+     * @param: [request] 请求参数
      * @return: java.lang.Object 响应参数
      **/
     @RequestMapping(value = "/innerInvoke")

@@ -3,10 +3,10 @@ package com.tydic.ares.entity;
 import java.util.List;
 
 /**
- * @Author: Ares
- * @Date: 2019/6/5 15:19
- * @Description: 班级
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/6/5 15:19
+ * @description: 班级
+ * @version: JDK 1.8
  */
 public class SchoolClass
 {

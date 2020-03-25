@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Author Ares
- * @Date 2018/12/7 20:01
- * @Description: 实现打印执行时间注解的行为(xml配置方式)
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/12/7 20:01
+ * @description: 实现打印执行时间注解的行为(xml配置方式)
+ * @version JDK 1.8
  */
 public class TrackTimeAspectXml
 {

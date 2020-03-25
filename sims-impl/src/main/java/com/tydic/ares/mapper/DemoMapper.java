@@ -2,6 +2,7 @@ package com.tydic.ares.mapper;
 
 
 import com.tydic.ares.annotation.TrackTime;
+import com.tydic.ares.entity.AcctBalanceEntity;
 import com.tydic.ares.entity.SchoolClass;
 import com.tydic.ares.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
@@ -45,4 +46,21 @@ public interface DemoMapper
     int addStudentBatch(List<Student> students);
 
     List<Student> findStudentByNameTest(SchoolClass schoolClass);
+
+    /**
+     * @author: Ares
+     * @description: 测试teledb的事务问题
+     * @date: 2019/11/2 10:51
+     * @param: [] 请求参数
+     * @return:  响应参数
+     */
+    int testTeledbUpdateBalance(AcctBalanceEntity acctBalance);
+    /**
+     * @author: Ares
+     * @description: 测试teledb的事务问题
+     * @date: 2019/11/2 10:51
+     * @param: [] 请求参数
+     * @return:  响应参数
+     */
+    AcctBalanceEntity testTeledbQueryBalance();
 }

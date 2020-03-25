@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: Ares
- * @Date: 2019/5/31 15:11
- * @Description:
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/5/31 15:11
+ * @description:
+ * @version: JDK 1.8
  */
 @RestController
 @RequestMapping("/eurekaCenter")

@@ -1,10 +1,10 @@
 package com.asiainfo.ares.exceptions;
 
 /**
- * @Author: Ares
- * @Date: 2019/6/10 19:51
- * @Description:
- * @Version: JDK 1.8
+ * @author: Ares
+ * @date: 2019/6/10 19:51
+ * @description:
+ * @version: JDK 1.8
  */
 public class RemoteInvokeException extends Exception
 {

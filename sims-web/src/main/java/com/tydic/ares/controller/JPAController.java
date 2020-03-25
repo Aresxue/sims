@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @Author Ares
- * @Date 2018/7/26 19:07
- * @Description:
- * @Version JDK 1.8
+ * @author Ares
+ * @date 2018/7/26 19:07
+ * @description:
+ * @version JDK 1.8
  */
 @RestController
 @RequestMapping(value = "/jpa")
