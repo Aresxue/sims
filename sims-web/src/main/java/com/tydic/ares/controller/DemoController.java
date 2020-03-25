@@ -1,10 +1,9 @@
 package com.tydic.ares.controller;
 
 
-import com.asiainfo.ares.function.AuthorizationFuncService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
+import com.tydic.ares.remote.DemoRemote;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -12,14 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * 测试所用
@@ -44,6 +38,9 @@ public class DemoController
     @Autowired
     private AuthorizationFuncService authorizationFuncService;
 
+    @Autowired
+    private DemoRemote demoRemote;
+
     @HystrixCommand(fallbackMethod = "sayError")
     @RequestMapping(value = "/findStudentByName")
     public Student findStudentByName(HttpServletRequest request, @RequestBody(required = false) String parameters)
@@ -55,8 +52,10 @@ public class DemoController
             LOGGER.info("studentName:" + studentName);
             Student student = new Student();
             student.setStudentName(studentName);
+            student = demoRemote.findStudentByName(student);
+            return student;
 
-/*
+            /*
             //1.第一种写法，硬编码，有两个问题：
             //当注册中心有很多服务时，我们可能不知道我们需要的服务由谁提供、api是多少，因此就可能无法调用到服务。
             //当某个服务部署了多个，例如 api 是： “localhost:9080/getMsg，localhost:9081/getMsg “，那么此时就需要负载均衡，这种硬编码显然不符合场景。
@@ -75,9 +74,9 @@ public class DemoController
             student = restTemplate.postForObject(url, student, Student.class);
 */
             //第三种，目前来看最好的方法
-            student = restTemplate.postForObject("http://SIMS-IMPL/com/tydic/ares/serviceImpl/findStudentByName", student, Student.class);
-
-            return student;
+//            student = restTemplate.postForObject("http://SIMS-IMPL/com/tydic/ares/serviceImpl/findStudentByName", student, Student.class);
+//
+//            return student;
         } catch (JSONException e)
         {
             throw new RuntimeException("字符串转json出错");
@@ -87,6 +86,23 @@ public class DemoController
             throw new RuntimeException("阿哦,出错了");
         }
     }
+  /*  @RequestMapping(value = "/findStudentByName")
+    public Student findStudentByName(@RequestBody Student student)
+    {
+        try
+        {
+            student = demoRemote.findStudentByName(student);
+            return student;
+        } catch (JSONException e)
+        {
+            throw new RuntimeException("字符串转json出错");
+        } catch (Exception e)
+        {
+            LOGGER.error("我有种不好的预感", e);
+            throw new RuntimeException("阿哦,出错了");
+        }
+    }*/
+
 
     @RequestMapping(value = "/findStudentById")
     public Student findStudentById(HttpServletRequest request, @RequestBody(required = false) String parameters)

@@ -14,6 +14,10 @@
 	<description>注册中心</description>
 
 	<parent>
+		<!--<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 		<groupId>com.tydic</groupId>
 		<artifactId>sims</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
@@ -26,11 +30,11 @@
 	</properties>-->
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
+
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

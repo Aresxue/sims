@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tydic</groupId>
-    <artifactId>sims</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<groupId>com.tydic</groupId>
+	<artifactId>sims</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-    <name>sims</name>
-    <description>父项目</description>
+	<name>sims</name>
+	<description>父项目</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
-
-    <modules>
-        <module>sims-discovery-server</module>
-        <module>base-expand</module>
-        <module>authorization-api</module>
-        <module>authorization-impl</module>
-        <module>sims-api</module>
-        <module>sims-impl</module>
-        <module>sims-web</module>
-    </modules>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>>2.2.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <project.version>0.0.1-SNAPSHOT</project.version>
-        <!--  <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>-->
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
-    </properties>
+	<modules>
+		<module>sims-discovery-server</module>
+		<module>base-expand</module>
+		<module>authorization-api</module>
+		<module>authorization-impl</module>
+		<module>sims-api</module>
+		<module>sims-impl</module>
+		<module>sims-web</module>
+	</modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- 删除spring-boot-starter和spring-boot-starter-test，
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<project.version>0.0.1-SNAPSHOT</project.version>
+		<!--  <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>-->
+		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+		<spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 删除spring-boot-starter和spring-boot-starter-test，
                               因为parent中继承的祖先中已经有了，并且一般dependencyManagement管理的依赖都要写版本号
                                这里只是声明依赖，并不导入-->
-            <!--<dependency>
+			<!--<dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
             </dependency>
@@ -55,90 +55,90 @@
                 <scope>test</scope>
             </dependency>-->
 
-            <dependency>
-                <groupId>com.tydic</groupId>
-                <artifactId>sims-discovery-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.tydic</groupId>
-                <artifactId>sims-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.tydic</groupId>
-                <artifactId>sims-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.tydic</groupId>
-                <artifactId>sims-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.tydic</groupId>
+				<artifactId>sims-discovery-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tydic</groupId>
+				<artifactId>sims-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tydic</groupId>
+				<artifactId>sims-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tydic</groupId>
+				<artifactId>sims-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>com.asiainfo</groupId>
-                <artifactId>base-expand</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>base-expand</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>com.asiainfo</groupId>
-                <artifactId>authorization-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>authorization-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>com.asiainfo</groupId>
-                <artifactId>authorization-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.asiainfo</groupId>
+				<artifactId>authorization-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <!-- 目前来看有它顶starter、starter-web、start-test
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<!-- 目前来看有它顶starter、starter-web、start-test
                 scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency
                 相当于导入了spring-cloud-dependencies所有包
                 使用方式暂且不是很懂，尽量不用-->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!--SpringCloud Alibaba-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--SpringCloud Alibaba-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <!--设置maven仓库-->
+	<!--设置maven仓库-->
 
-    <repositories>
-        <repository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
+	<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
 
-    <!--该插件作用是打一个可运行的包，必须要写在需要打包的项目里。这里的父模块不需要打包运行，所以删掉该插件。-->
-    <!--<build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>-->
+	<!--该插件作用是打一个可运行的包，必须要写在需要打包的项目里。这里的父模块不需要打包运行，所以删掉该插件。-->
+	<!--<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>-->
 
 </project>
