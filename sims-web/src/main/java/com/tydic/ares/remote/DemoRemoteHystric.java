@@ -25,7 +25,7 @@ public class DemoRemoteHystric implements DemoRemote
         logger.error("我在找一个学生时出错了");
         student = new Student();
         student.setStudentName("我是一个假学生");
-        student.setStudentAge(10000L);
+        student.setStudentAge(10000);
         return student;
     }
 

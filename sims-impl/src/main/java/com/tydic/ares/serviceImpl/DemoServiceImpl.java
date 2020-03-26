@@ -1,11 +1,14 @@
 package com.tydic.ares.serviceImpl;
 
+import com.tydic.ares.annotation.TrackTime;
+import com.tydic.ares.entity.AcctBalanceEntity;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
+import com.tydic.ares.entity.Teacher;
+import com.tydic.ares.jpa.TeacherJPA;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
 import com.tydic.ares.service.DemoService;
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,7 +128,7 @@ public class DemoServiceImpl implements DemoService
     @Override
     public Teacher findStudentByIdJPA(Long teacherId)
     {
-        //使用findById查询
+        // 使用findById查询
         Optional<Teacher> optional = teacherJPA.findById(teacherId);
         return optional.orElseGet(Teacher::new);
     }
