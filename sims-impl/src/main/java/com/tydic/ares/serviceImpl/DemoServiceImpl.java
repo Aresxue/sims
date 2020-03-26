@@ -8,7 +8,6 @@ import com.tydic.ares.entity.Teacher;
 import com.tydic.ares.jpa.TeacherJPA;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
-import com.tydic.ares.remote.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ import java.util.Optional;
 @RestController
 @Service
 @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_UNCOMMITTED)
-public class DemoServiceImpl implements DemoService
+public class DemoServiceImpl implements com.tydic.ares.service.DemoService
 {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

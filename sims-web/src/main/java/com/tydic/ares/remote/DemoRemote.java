@@ -2,7 +2,7 @@ package com.tydic.ares.remote;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2018/3/2 16:48
  */
 @FeignClient("SIMS-IMPL")
-@Repository
 public interface DemoRemote
 {
     /**

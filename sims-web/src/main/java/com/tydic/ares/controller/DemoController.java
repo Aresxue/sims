@@ -1,6 +1,8 @@
 package com.tydic.ares.controller;
 
 
+import com.asiainfo.ares.function.AuthorizationFuncService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
 import com.tydic.ares.remote.DemoRemote;
@@ -11,9 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * 测试所用

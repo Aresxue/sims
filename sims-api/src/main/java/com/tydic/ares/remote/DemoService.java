@@ -2,6 +2,9 @@ package com.tydic.ares.service;
 
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
+import com.tydic.ares.entity.Teacher;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 测试所用
