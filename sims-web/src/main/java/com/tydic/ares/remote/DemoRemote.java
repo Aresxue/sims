@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Ares
  * @date 2018/3/2 16:48
  */
-@FeignClient("SIMS-IMPL")
+@FeignClient(value = "SIMS-IMPL", fallback = DemoRemoteHystric.class)
 public interface DemoRemote
 {
     /**
@@ -20,7 +20,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentByName")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
     Student findStudentByName(Student student);
 
 
@@ -31,7 +31,7 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/addStudent")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl//addStudent")
     ResponseBase addStudent(Student student);
 
     /**
@@ -42,6 +42,6 @@ public interface DemoRemote
      *
      * @return
      */
-    @RequestMapping(value = "/demo/findStudentById")
+    @RequestMapping(value = "/com/tydic/ares/serviceImpl//findStudentById")
     Student findStudentById(@RequestParam("studentId")Long studentId);
 }

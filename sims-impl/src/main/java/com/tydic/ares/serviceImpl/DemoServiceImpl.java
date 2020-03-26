@@ -1,19 +1,15 @@
 package com.tydic.ares.serviceImpl;
 
-import com.tydic.ares.annotation.TrackTime;
-import com.tydic.ares.entity.AcctBalanceEntity;
 import com.tydic.ares.entity.ResponseBase;
 import com.tydic.ares.entity.Student;
-import com.tydic.ares.entity.Teacher;
-import com.tydic.ares.jpa.TeacherJPA;
 import com.tydic.ares.mapper.DemoMapper;
 import com.tydic.ares.mapper.StudentMapper;
+import com.tydic.ares.service.DemoService;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +24,7 @@ import java.util.Optional;
  */
 @RestController
 @Service
-@Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_UNCOMMITTED)
-public class DemoServiceImpl implements com.tydic.ares.service.DemoService
+public class DemoServiceImpl implements DemoService
 {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -49,7 +44,8 @@ public class DemoServiceImpl implements com.tydic.ares.service.DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
+//    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentByName")
+    @RequestMapping(value = "/demo/findStudentByName")
     @Override
     @TrackTime(param = "昨夜西风凋碧树")
    /* public Student findStudentByName(@RequestBody(required = false) Student student)
@@ -83,7 +79,8 @@ public class DemoServiceImpl implements com.tydic.ares.service.DemoService
      *
      * @return
      */
-    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentById")
+//    @RequestMapping(value = "/com/tydic/ares/serviceImpl/findStudentById")
+    @RequestMapping(value = "/demo/findStudentById")
     @Override
     public Student findStudentById(Long studentId)
     {
@@ -118,7 +115,6 @@ public class DemoServiceImpl implements com.tydic.ares.service.DemoService
         return responseBase;
     }
 
-
     /**
      * 根据教师id查询教师信息
      *
@@ -134,6 +130,14 @@ public class DemoServiceImpl implements com.tydic.ares.service.DemoService
         return optional.orElseGet(Teacher::new);
     }
 
+    /**
+     * 新增一名学生信息
+     *
+     * @param student
+     *
+     * @return
+     */
+    @RequestMapping(value = "/demo/addStudent")
     @Override
     public ResponseBase addStudent(@RequestBody(required = false) Student student)
     {
