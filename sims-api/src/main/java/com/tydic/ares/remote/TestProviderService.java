@@ -6,7 +6,7 @@ package com.tydic.ares.remote;
  * @description: 提供接口被TestService调用
  * @version: JDK 1.8
  */
-public interface TestProvider
+public interface TestProviderService
 {
     void selectPaymentId(String datasourceId);
 

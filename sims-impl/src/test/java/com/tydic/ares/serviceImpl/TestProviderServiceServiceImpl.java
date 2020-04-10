@@ -1,7 +1,7 @@
 package com.tydic.ares.serviceImpl;
 
 import com.tydic.ares.mapper.TestMapper;
-import com.tydic.ares.remote.TestProvider;
+import com.tydic.ares.remote.TestProviderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
  * @version: JDK 1.8
  */
 @Service
-public class TestProviderImpl implements TestProvider
+public class TestProviderServiceServiceImpl implements TestProviderService
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestProviderImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestProviderServiceServiceImpl.class);
 
     @Autowired
     private TestMapper testMapper;
@@ -30,13 +30,13 @@ public class TestProviderImpl implements TestProvider
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, transactionManager = "default")
     public void testInsertPaymentB()
     {
         for (int i = 0; i < 100; i++)
         {
             testMapper.testInsertPayment("payment_202005", i);
         }
-        //                throw new RuntimeException();
+        //                        throw new RuntimeException();
     }
 }

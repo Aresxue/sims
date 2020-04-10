@@ -1,7 +1,7 @@
 package com.tydic.ares.serviceImpl;
 
 import com.tydic.ares.mapper.TestMapper;
-import com.tydic.ares.remote.TestProvider;
+import com.tydic.ares.remote.TestProviderService;
 import com.tydic.ares.remote.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class TestServiceImpl implements TestService
     private TestMapper testMapper;
 
     @Autowired
-    private TestProvider testProvider;
+    private TestProviderService testProviderService;
 
     @Override
     public void testDynamicDataSource()
@@ -46,7 +46,7 @@ public class TestServiceImpl implements TestService
      * @return: int 响应参数
      */
     @Override
-    @Transactional(propagation = Propagation.NEVER)
+    @Transactional(propagation = Propagation.REQUIRED, transactionManager = "default")
     public void testInsertPaymentA()
     {
         for (int i = 0; i < 100; i++)
@@ -60,9 +60,8 @@ public class TestServiceImpl implements TestService
         //            testMapper.testInsertPayment(i);
         //        }
 
-
-        testProvider.testInsertPaymentB();
-        throw new RuntimeException();
+        testProviderService.testInsertPaymentB();
+        //        throw new RuntimeException();
 
         //                try
         //                {
