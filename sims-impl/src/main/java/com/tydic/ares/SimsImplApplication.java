@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.tydic.ares.serviceImpl"})
 @EnableEurekaClient
 @EnableAspectJAutoProxy
 //以下两个注解用以启用xml配置文件
