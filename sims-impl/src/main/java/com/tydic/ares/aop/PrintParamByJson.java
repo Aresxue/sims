@@ -42,7 +42,7 @@ public class PrintParamByJson
      * @param: [thisJoinPoint] 请求参数
      * @return: java.lang.Object 响应参数
      **/
-    @Around("com.tydic.ares.aop.CommonJoinPointConfig.printParamByJson()")
+    @Around(" com.tydic.ares.aop.CommonJoinPointConfig.printParamByJson()")
     public Object printParamByJson(ProceedingJoinPoint thisJoinPoint) throws Throwable
     {
         Object result = null;
